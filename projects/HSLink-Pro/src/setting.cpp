@@ -234,7 +234,7 @@ void Setting_Init(void)
     // } else {
     //     HSLink_Global.reset_level = 0; // level when reset is active
     // }
-    HSLink_Global.reset_level = 1;
+    HSLink_Global.reset_level = 0;
 }
 
 void Setting_Save(void)
