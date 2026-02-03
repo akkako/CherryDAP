@@ -11,7 +11,7 @@ void PORT_SWD_SETUP(void)
     }
 }
 
-void SWJ_Sequence(uint32_t count, const uint8_t *data)
+void __attribute__((section(".fast"))) SWJ_Sequence(uint32_t count, const uint8_t *data)
 {
     if (DAP_Data.debug_port == DAP_PORT_JTAG) {
         gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(SWDIO_DIR), GPIO_GET_PIN_INDEX(SWDIO_DIR),
@@ -41,7 +41,7 @@ void SWJ_Sequence(uint32_t count, const uint8_t *data)
     }
 }
 
-void SWD_Sequence(uint32_t info, const uint8_t *swdo, uint8_t *swdi)
+void __attribute__((section(".fast"))) SWD_Sequence(uint32_t info, const uint8_t *swdo, uint8_t *swdi)
 {
     if (HSLink_Setting.swd_port_mode == PORT_MODE_SPI) {
         SPI_SWD_Sequence(info, swdo, swdi);
@@ -50,7 +50,7 @@ void SWD_Sequence(uint32_t info, const uint8_t *swdo, uint8_t *swdi)
     }
 }
 
-uint8_t SWD_Transfer(uint32_t request, uint32_t *data)
+uint8_t __attribute__((section(".fast"))) SWD_Transfer(uint32_t request, uint32_t *data)
 {
     if (HSLink_Setting.swd_port_mode == PORT_MODE_SPI) {
         return SPI_SWD_Transfer(request, data);

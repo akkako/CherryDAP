@@ -106,7 +106,7 @@ void IO_PORT_SWD_SETUP (void) {
 //   data:   pointer to sequence bit data
 //   return: none
 #if ((DAP_SWD != 0) || (DAP_JTAG != 0))
-void IO_SWJ_Sequence (uint32_t count, const uint8_t *data) {
+void __attribute__((section(".fast"))) IO_SWJ_Sequence (uint32_t count, const uint8_t *data) {
   uint32_t val;
   uint32_t n;
 
@@ -136,7 +136,7 @@ void IO_SWJ_Sequence (uint32_t count, const uint8_t *data) {
 //   swdi:   pointer to SWDIO captured data
 //   return: none
 #if (DAP_SWD != 0)
-void IO_SWD_Sequence (uint32_t info, const uint8_t *swdo, uint8_t *swdi) {
+void __attribute__((section(".fast"))) IO_SWD_Sequence (uint32_t info, const uint8_t *swdo, uint8_t *swdi) {
   uint32_t val;
   uint32_t bit;
   uint32_t n, k;
@@ -178,7 +178,7 @@ void IO_SWD_Sequence (uint32_t info, const uint8_t *swdo, uint8_t *swdi) {
 //   data:    DATA[31:0]
 //   return:  ACK[2:0]
 #define SWD_TransferFunction(speed)     /**/                                    \
-static uint8_t SWD_Transfer##speed (uint32_t request, uint32_t *data) {         \
+static uint8_t __attribute__((section(".fast"))) SWD_Transfer##speed (uint32_t request, uint32_t *data) {         \
   uint32_t ack;                                                                 \
   uint32_t bit;                                                                 \
   uint32_t val;                                                                 \
@@ -318,7 +318,7 @@ SWD_TransferFunction(Slow)
 //   request: A[3:2] RnW APnDP
 //   data:    DATA[31:0]
 //   return:  ACK[2:0]
-uint8_t  IO_SWD_Transfer(uint32_t request, uint32_t *data) {
+uint8_t __attribute__((section(".fast"))) IO_SWD_Transfer(uint32_t request, uint32_t *data) {
   if (DAP_Data.fast_clock) {
     return SWD_TransferFast(request, data);
   } else {

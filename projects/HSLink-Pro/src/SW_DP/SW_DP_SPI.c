@@ -103,7 +103,7 @@ void SPI_SWJ_Sequence (uint32_t count, const uint8_t *data)
 //   swdi:   pointer to SWDIO captured data
 //   return: none
 #if (DAP_SWD != 0)
-void SPI_SWD_Sequence (uint32_t info, const uint8_t *swdo, uint8_t *swdi)
+void __attribute__((section(".fast"))) SPI_SWD_Sequence (uint32_t info, const uint8_t *swdo, uint8_t *swdi)
 {
     uint32_t count, integer_val, remaind_val, n = 0;
 
@@ -172,7 +172,7 @@ void SPI_SWD_Sequence (uint32_t info, const uint8_t *swdo, uint8_t *swdi)
 //   request: A[3:2] RnW APnDP
 //   data:    DATA[31:0]
 //   return:  ACK[2:0]
-uint8_t  SPI_SWD_Transfer(uint32_t request, uint32_t *data)
+uint8_t __attribute__((section(".fast"))) SPI_SWD_Transfer(uint32_t request, uint32_t *data)
 {
     uint8_t ack = 0;
     uint32_t parity = 0;
