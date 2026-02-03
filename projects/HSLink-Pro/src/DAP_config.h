@@ -449,7 +449,7 @@ __STATIC_INLINE void PORT_OFF(void)
 __STATIC_FORCEINLINE uint32_t PIN_SWCLK_TCK_IN(void)
 {
     uint32_t sta = gpio_read_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TCK), GPIO_GET_PIN_INDEX(PIN_TCK));
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
     return sta;
 }
 
@@ -459,7 +459,7 @@ Set the SWCLK/TCK DAP hardware I/O pin to high level.;
 __STATIC_FORCEINLINE void PIN_SWCLK_TCK_SET(void)
 {
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TCK), GPIO_GET_PIN_INDEX(PIN_TCK), true);
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 /** SWCLK/TCK I/O pin: Set Output to Low.
@@ -468,7 +468,7 @@ Set the SWCLK/TCK DAP hardware I/O pin to low level.
 __STATIC_FORCEINLINE void PIN_SWCLK_TCK_CLR(void)
 {
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TCK), GPIO_GET_PIN_INDEX(PIN_TCK), false);
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 
@@ -484,7 +484,7 @@ __STATIC_FORCEINLINE uint32_t PIN_SWDIO_TMS_IN(void)
 	#else
 	uint32_t sta = gpio_read_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TMS), GPIO_GET_PIN_INDEX(PIN_TMS));
 	#endif
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
     return sta;
 }
 
@@ -494,7 +494,7 @@ Set the SWDIO/TMS DAP hardware I/O pin to high level.
 __STATIC_FORCEINLINE void PIN_SWDIO_TMS_SET(void)
 {
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TMS), GPIO_GET_PIN_INDEX(PIN_TMS), true);
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 /** SWDIO/TMS I/O pin: Set Output to Low.
@@ -503,7 +503,7 @@ Set the SWDIO/TMS DAP hardware I/O pin to low level.
 __STATIC_FORCEINLINE void PIN_SWDIO_TMS_CLR(void)
 {
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TMS), GPIO_GET_PIN_INDEX(PIN_TMS), false);
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 /** SWDIO I/O pin: Get Input (used in SWD mode only).
@@ -516,7 +516,7 @@ __STATIC_FORCEINLINE uint32_t PIN_SWDIO_IN(void)
 	#else
 	uint32_t sta = gpio_read_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TMS), GPIO_GET_PIN_INDEX(PIN_TMS));
 	#endif
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
     return sta;
 }
 
@@ -526,7 +526,7 @@ __STATIC_FORCEINLINE uint32_t PIN_SWDIO_IN(void)
 __STATIC_FORCEINLINE void PIN_SWDIO_OUT(uint32_t bit)
 {
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TMS), GPIO_GET_PIN_INDEX(PIN_TMS), bit & 0x01);
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 /** SWDIO I/O pin: Switch to Output mode (used in SWD mode only).
@@ -569,7 +569,7 @@ __STATIC_FORCEINLINE void PIN_SWDIO_OUT_DISABLE(void)
 __STATIC_FORCEINLINE uint32_t PIN_TDI_IN(void)
 {
     uint32_t sta = gpio_read_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TDI), GPIO_GET_PIN_INDEX(PIN_TDI));
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
     return sta;
 }
 
@@ -579,7 +579,7 @@ __STATIC_FORCEINLINE uint32_t PIN_TDI_IN(void)
 __STATIC_FORCEINLINE void PIN_TDI_OUT(uint32_t bit)
 {
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TDI), GPIO_GET_PIN_INDEX(PIN_TDI), bit & 0x01);
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 
@@ -591,7 +591,7 @@ __STATIC_FORCEINLINE void PIN_TDI_OUT(uint32_t bit)
 __STATIC_FORCEINLINE uint32_t PIN_TDO_IN(void)
 {
     uint32_t sta = gpio_read_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TDO), GPIO_GET_PIN_INDEX(PIN_TDO));
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
     return sta;
 }
 
@@ -604,7 +604,7 @@ __STATIC_FORCEINLINE uint32_t PIN_TDO_IN(void)
 __STATIC_FORCEINLINE uint32_t PIN_nTRST_IN(void)
 {
     uint32_t sta = gpio_read_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_JTAG_TRST), GPIO_GET_PIN_INDEX(PIN_JTAG_TRST));
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
     return sta;
 }
 
@@ -616,7 +616,7 @@ __STATIC_FORCEINLINE uint32_t PIN_nTRST_IN(void)
 __STATIC_FORCEINLINE void PIN_nTRST_OUT(uint32_t bit)
 {
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_JTAG_TRST), GPIO_GET_PIN_INDEX(PIN_JTAG_TRST), bit & 0x01);
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 // nRESET Pin I/O------------------------------------------
@@ -627,7 +627,7 @@ __STATIC_FORCEINLINE void PIN_nTRST_OUT(uint32_t bit)
 __STATIC_FORCEINLINE uint32_t PIN_nRESET_IN(void)
 {
     uint32_t sta = gpio_read_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_SRST), GPIO_GET_PIN_INDEX(PIN_SRST));
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
     return sta;
 }
 
@@ -653,7 +653,7 @@ __STATIC_FORCEINLINE void PIN_nRESET_OUT(uint32_t bit)
             por_reset();
         }
     }
-    __asm volatile("fence io, io");
+    // __asm volatile("fence io, io");
 }
 
 ///@}
