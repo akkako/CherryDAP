@@ -344,13 +344,13 @@ __STATIC_FORCEINLINE void PIN_DELAY_SLOW (uint32_t delay) {
 #endif
 __STATIC_FORCEINLINE void PIN_DELAY_FAST (void) {
 #if (DELAY_FAST_CYCLES >= 1U)
-  __NOP();
+  asm("nop");
 #endif
 #if (DELAY_FAST_CYCLES >= 2U)
-  __NOP();
+  asm("nop");
 #endif
 #if (DELAY_FAST_CYCLES >= 3U)
-  __NOP();
+  asm("nop");
 #endif
 }
 
