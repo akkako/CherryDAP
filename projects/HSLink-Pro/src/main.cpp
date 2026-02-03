@@ -59,7 +59,7 @@ static void EWDG_Init() {
 
 [[noreturn]] // make compiler happy
 int main() {
-    clear_csr(CSR_MMISC_CTL, 0x8);
+    // clear_csr(CSR_MMISC_CTL, 0x8);
     board_init();
     EWDG_Init();
     board_delay_ms(500);

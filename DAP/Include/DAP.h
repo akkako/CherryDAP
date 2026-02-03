@@ -357,9 +357,7 @@ __STATIC_FORCEINLINE void PIN_DELAY_FAST (void) {
   asm("nop");
   asm("nop");
   asm("nop");
-  asm("nop");
-  asm("nop");
-  asm("nop");
+
 #endif
 }
 
