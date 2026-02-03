@@ -351,6 +351,9 @@ __STATIC_FORCEINLINE void PIN_DELAY_FAST (void) {
 #endif
 #if (DELAY_FAST_CYCLES >= 3U)
   asm("nop");
+  asm("nop");
+  asm("nop");
+  asm("nop");
 #endif
 }
 
