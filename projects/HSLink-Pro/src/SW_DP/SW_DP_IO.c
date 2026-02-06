@@ -125,7 +125,8 @@ void IO_SWJ_Sequence (uint32_t count, const uint8_t *data) {
     val >>= 1;
     n--;
   }
-  PIN_SWDIO_OUT_DISABLE();
+  // no change to input
+  // PIN_SWDIO_OUT_DISABLE();
 
 }
 #endif
