@@ -109,6 +109,8 @@ void IO_SWJ_Sequence (uint32_t count, const uint8_t *data) {
 
   val = 0U;
   n = 0U;
+
+  PIN_SWDIO_OUT_ENABLE();
   while (count--) {
     if (n == 0U) {
       val = *data++;
@@ -123,6 +125,8 @@ void IO_SWJ_Sequence (uint32_t count, const uint8_t *data) {
     val >>= 1;
     n--;
   }
+  PIN_SWDIO_OUT_DISABLE();
+
 }
 #endif
 
