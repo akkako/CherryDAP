@@ -93,7 +93,7 @@ void IO_PORT_SWD_SETUP (void) {
     gpio_set_pin_output(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_TMS), GPIO_GET_PIN_INDEX(PIN_TMS));
     gpio_set_pin_output(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_SRST), GPIO_GET_PIN_INDEX(PIN_SRST));
 
-    gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(SWDIO_DIR), GPIO_GET_PIN_INDEX(SWDIO_DIR), 0); // 默认SWDIO为输入
+    gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(SWDIO_DIR), GPIO_GET_PIN_INDEX(SWDIO_DIR), 1); // 默认SWDIO为输出
     gpio_write_pin(PIN_GPIO, GPIO_GET_PORT_INDEX(PIN_SRST), GPIO_GET_PIN_INDEX(PIN_SRST), !HSLink_Global.reset_level);
 }
 #endif
@@ -110,7 +110,7 @@ void IO_SWJ_Sequence (uint32_t count, const uint8_t *data) {
   val = 0U;
   n = 0U;
 
-  PIN_SWDIO_OUT_ENABLE();
+  // PIN_SWDIO_OUT_ENABLE();
   while (count--) {
     if (n == 0U) {
       val = *data++;
